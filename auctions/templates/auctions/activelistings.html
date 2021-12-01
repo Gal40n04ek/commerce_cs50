@@ -1,0 +1,32 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+
+
+{% block body %}
+    <h1>Active Listings</h1>
+    <ul class="nav">
+        {% for category in categories %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'activelistings' %}&category={{category.id}}">{{category}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="container">
+        {% for item in listings %}
+            <div class="listingItem">
+                <h2>
+                    <a href="{{item.id}}">{{item.title}}</a>
+                </h2>
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" width="300">
+                {% endif %}
+                <div class="listingItemFooter">
+                    <p>Start price: {{item.cost}}$</p>
+                </div>                
+            </div>                
+        {% endfor %}
+        
+    </div>
+    
+{% endblock %}

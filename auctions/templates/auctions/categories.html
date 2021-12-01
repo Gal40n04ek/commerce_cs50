@@ -1,0 +1,16 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+
+
+{% block body %}
+    <h1> Auctions categories</h1>
+    <ul class="nav" id="categoriesNav">
+        {% for category in categories %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'activelistings' %}">{{category}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

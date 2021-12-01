@@ -1,0 +1,111 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+
+
+{% block body %}
+    <h2 class="itemTitle">{{ listing.title }}</h2>
+    <div class="upPart">
+        <div class="itemDescription">
+            <div>
+                {% if listing.image %}
+                <img src="{{ listing.image.url|default:'static/images/images.no_image.jpg' }}" width="300">
+                {% endif %}
+            </div>
+            {% if listing.activeFlag %}
+            <div class="sideblock">            
+                <div>
+                    <span class="time"> Created: {{listing.timeCreated}}</span>
+                </div>
+                <div class="price">
+                    <p><span>Start price: </span> {{listing.cost}} $</p> 
+                </div>
+                {% if listing.offerBid is not None %}
+                <div class="lastPrice">
+                    <p><span>Last offer: </span> {{listing.offerBid}} $</p> 
+                </div>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <div class="makeBidForm">
+                    <p>Do you want to make your offer?</p>
+                    <form action="{% url 'makeBid' listing.id %}" method="post" class="newBidForm">
+                        {% csrf_token %}
+                        {{ bidForm }}                    
+                        <input type ="submit" value="Make a bid!" class="bidSubmit">
+                        {% if error %}
+                            <p>Your bid must be greater than {{lastCost}}!</p>
+                        {% endif %} 
+                        {% if success %}
+                            <p>SUCCESS! Your bid is taken!</p>
+                        {% endif %}                       
+                    </form>
+                </div>
+            </div>
+            <div class="leftblock">
+                <div>
+                    <form action="{% url 'changeWatchList' listing.id %}" method="post">
+                        {% csrf_token %}
+                        {% if checker %}
+                        <p>Do you want to add this listing to your WatchList?</p>
+                        <input type ="submit" value="Add" id="add">
+                        {% else %}
+                        <p>Do you want to remove this listing from your WatchList?</p>
+                        <input type ="submit" value="Remove" id="remove">
+                        {% endif %}
+                    </form>
+                </div>
+                {% if closeMessage %}   
+                <div>
+                    <form action="{% url 'closeListing' listing.id %}" method="post">
+                        {% csrf_token %}
+                        <p>Do you want to close listing?</p>
+                        <input type ="submit" value="Close" id="close">
+                    </form>
+                </div>         
+                {% endif %}
+    
+            </div>
+            {% endif %}
+            {% else %}
+            <div class="sideblock">
+                <div class="messageSold">
+                    <p>This listing has already been sold out!</p>
+                    {% if user.is_authenticated %}
+                    <p class="info">The winner is {{listing.winner}}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}            
+        </div>
+    </div>
+    
+    <div class="downPart">
+        <div class="description">
+            <h4>Description:</h4>
+            <div class="mainDescription">{{listing.description}}</div>
+        </div>
+    
+        <div class="commentBlock">
+            <h4>Comments:</h4>
+            {% for comment in comments %}
+                <div class="comment">
+                    <span class="commentUserName">{{ comment.user }}  </span><span class="time">{{ comment.timeAdded }} :   </span> 
+                    <p class="commentContent">{{ comment.commentContent }}</p>
+                </div>
+            {% empty %}
+                <p>No left comments yet</p>
+            {% endfor %}
+        </div>
+        
+        <br>
+        {% if user.is_authenticated %}
+            <form action="{% url 'comment' listing.id %}" method="post" class="commentForm">
+                {% csrf_token %}
+                {{ form }}
+                <br>
+                <input type ="submit" value="Save comment">
+            </form>
+        {% endif %}
+    </div>        
+    
+{% endblock %}

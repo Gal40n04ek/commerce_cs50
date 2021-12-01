@@ -1,0 +1,25 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+
+
+
+{% block body %}
+    <h1>My Watchlist</h1>
+    <div class="container">
+        {% for item in listings %}
+            <div class="listingItem">
+                <h2>
+                    <a href="{{item.id}}">{{item.title}}</a>
+                </h2>
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" width="300">
+                {% endif %}
+                <div class="listingItemFooter">
+                    <p>Start price: {{item.cost}}$</p>
+                </div>               
+            </div>                
+        {% endfor %}
+        
+    </div>
+    
+{% endblock %}

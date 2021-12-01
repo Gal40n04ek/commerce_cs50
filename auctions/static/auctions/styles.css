@@ -1,0 +1,198 @@
+body {
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+    font-family: 'Source Serif Pro', serif;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    justify-content: space-around; 
+    align-content: stretch;  
+}
+
+.itemDescription {
+    padding: 0 20px 10px;
+    display: flex;
+}
+
+.itemTitle {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    padding-left: 20px;
+}
+
+.description > p {
+    border-top: 1px solid lightgrey;
+    font-weight: 700;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.mainDescription {
+    padding: 0 20px 10px;
+}
+
+.sideblock {
+    padding-top: 20px;
+    padding-left: 50px;
+}
+
+.leftblock {
+    padding-top: 20px;
+    padding-left: 100px;
+}
+
+.leftblock > div {
+    margin-bottom: 50px;
+}
+
+#add {
+    padding: 0 40px;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    background-color:rgb(20, 20, 134);
+}
+
+#remove {
+    padding: 0 10px;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    background-color:rgb(20, 20, 134);
+}
+
+#categoriesNav {
+    font-size: 35px;
+}
+
+#categoriesNav > li {
+    font-size: 30px;
+}
+
+.messageSold {
+    font-size: 30px;
+    font-weight: 700;
+    color: red;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.info {
+    font-size: 20px;
+    color: black;
+}
+
+#close {
+    padding: 0 30px;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    background-color: rgb(54, 53, 53);
+}
+
+.makeBidForm {
+    padding: 20px 10px;
+    border: 1px solid lightgrey;
+}
+
+.bidSubmit {
+    margin-left: 10px;
+}
+
+.price {    
+    padding-top: 10px;
+    font-size: 40px;
+    font-weight:400;
+}
+
+.price span {
+    font-weight:400;
+    color: red;
+}
+
+.lastPrice {    
+    padding-top: 5px;
+    font-size: 40px;
+    font-weight:400;
+}
+
+.lastPrice span {
+    font-weight:400;
+    color: rgb(28, 4, 116);
+}
+
+.listingItem {
+    flex-basis: auto;
+    width: 350px;
+    height: 400px;
+    box-sizing: border-box;
+    position: relative;
+    padding: 20px;
+}
+
+.listingItem > h2 {
+    text-align: center;
+}
+
+img {
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+}
+.commentBlock, .description {
+    padding: 20px 20px 0 20px;
+    border-top: 1px solid lightgrey;
+}
+
+.userName {
+    font-weight: 400;
+}
+
+.comment {
+    padding-top: 10px;
+    padding-left: 30px;
+    border-bottom: 1px dashed lightgray;
+}
+
+.commentContent {
+    padding-top: 5px;
+    padding-left: 40px;
+}
+.time {
+    font-style: italic;
+    font-weight: 300;
+}
+
+.commentForm {
+    padding-left: 20px;
+}
+
+.listingItemFooter {
+    /* display: flex;
+    justify-content: space-between; */
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    color: red;
+}
+
+.commentUserName {
+    font-weight: 700;
+    font-size: 20px;
+    font-style: italic;
+    color:dimgrey
+}
+
